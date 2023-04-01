@@ -56,4 +56,8 @@ const validateCred = arr => {
   } 
 }
 
-console.log(validateCred(numbers));
+//console.log(validateCred(batch));
+
+const findInvalidCards = arrBatch => {
+  
+}
