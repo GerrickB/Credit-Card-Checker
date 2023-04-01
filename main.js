@@ -21,3 +21,35 @@ const mystery5 = [4, 9, 1, 3, 5, 4, 0, 4, 6, 3, 0, 7, 2, 5, 2, 3];
 
 // An array of all the arrays above
 const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, invalid3, invalid4, invalid5, mystery1, mystery2, mystery3, mystery4, mystery5];
+
+// Add your functions below:
+
+//test array
+const numbers = [4, 5, 3, 9, 6, 8, 9, 8, 8, 7, 7, 0, 5, 7, 9, 8];
+
+const validateCred = arr => {
+  let checkDigitIndex = arr.length - 1;
+  let checkDigit = arr[checkDigitIndex];
+  // log the checkDigit
+  console.log(checkDigit);
+  // initialize with check digit, sum of num in an array
+  let sum = checkDigit;
+
+  // Iterate to the left of check digit
+  // modifyNum is used to double every other array items
+  let modifyNum = true;
+  for (let i = checkDigitIndex - 1; i > -1; i--) {
+    let num = arr[i];
+    if (modifyNum === true) {
+      num *= 2;
+      if (num > 9) {
+        num -= 9;
+      }
+      modifyNum = true;
+    }
+    sum += num;
+  }
+  return sum;
+}
+
+console.log(validateCred(numbers));
