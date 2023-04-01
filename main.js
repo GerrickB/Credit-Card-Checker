@@ -65,6 +65,54 @@ const findInvalidCards = arrBatch => {
   return invalidCards;
 }
 
+const idInvalidCardCompanies = arrInvalid => {
+  let invalidComp = [];
+  // Used for of loop since the whole array is being iterated
+  for (const invalid of arrInvalid) {
+    // check first digit to determing invalid card company
+    switch (invalid[0]) {
+      case 3:
+        if (invalidComp.includes('Amex')) {
+          invalidComp.push('Amex duplicate')
+          break;
+        } else {
+          invalidComp.push('Amex');
+        }
+        break;
+      case 4:
+        if (invalidComp.includes('Visa')) {
+          invalidComp.push('Visa duplicate')
+          break;
+        } else {
+          invalidComp.push('Visa');
+        }
+        break;
+      case 5:
+        if (invalidComp.includes('Mastercard')) {
+          invalidComp.push('Mastercard duplicate')
+          break;
+        } else {
+          invalidComp.push('Mastercard');
+        }
+        break;;
+      case 6:
+        if (invalidComp.includes('Discover')) {
+          invalidComp.push('Discover duplicate')
+          break;
+        } else {
+          invalidComp.push('Discover');
+        }
+        break;
+      default:
+        invalidComp.push('Company not found');
+        break;
+    }
+  }
+  return invalidComp;
+}
 
+let invalid = findInvalidCards(batch);
+let invComp = idInvalidCardCompanies(invalid);
 //console.log(validateCred(valid1));
-console.log(findInvalidCards(batch));
+console.log(invalid);
+console.log(invComp);
