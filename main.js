@@ -24,14 +24,10 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 
 // Add your functions below:
 
-//test array
-const numbers = [4, 5, 3, 9, 6, 8, 9, 8, 8, 7, 7, 0, 5, 7, 9, 8];
-
 const validateCred = arr => {
   let checkDigitIndex = arr.length - 1;
   let checkDigit = arr[checkDigitIndex];
-  // log the checkDigit
-  console.log(checkDigit);
+  //console.log(checkDigit);
   // initialize with check digit, sum of num in an array
   let sum = checkDigit;
 
@@ -45,10 +41,13 @@ const validateCred = arr => {
       if (num > 9) {
         num -= 9;
       }
+      modifyNum = false;
+    } else if (modifyNum === false) {
       modifyNum = true;
     }
     sum += num;
   }
+  //console.log(sum);
   if (sum % 10 === 0) {
     return true;
   } else {
@@ -56,8 +55,16 @@ const validateCred = arr => {
   } 
 }
 
-//console.log(validateCred(batch));
-
 const findInvalidCards = arrBatch => {
-  
+  let invalidCards = [];
+  for (let i = 0; i < arrBatch.length - 1; i++) {
+    if (validateCred(arrBatch[i]) != true) {
+      invalidCards.push(arrBatch[i]);
+    }
+  }
+  return invalidCards;
 }
+
+
+//console.log(validateCred(valid1));
+console.log(findInvalidCards(batch));
