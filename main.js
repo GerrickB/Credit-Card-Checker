@@ -49,7 +49,11 @@ const validateCred = arr => {
     }
     sum += num;
   }
-  return sum;
+  if (sum % 10 === 0) {
+    return true;
+  } else {
+    return false;
+  } 
 }
 
 console.log(validateCred(numbers));
